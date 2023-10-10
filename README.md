@@ -1,4 +1,4 @@
-<h1><p align="center">ChatGPT LLDB Plugin - chatgpt-lldb-plugin</p></h1>
+<h1><p align="center">ChatGPT LLDB Plugin</p></h1>
 
 ## Dependencies
     - lldb == 11.0.1
