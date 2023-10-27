@@ -94,7 +94,7 @@ sig_detected = ""
 variables_to_be_sent = True
 blocking_errors = False
 def automated_debugging(debugger):
-    global line_of_crush, sig_detected, variables_to_be_sent, blocking_errors, memory_read_failed
+    global line_of_crash, sig_detected, variables_to_be_sent, blocking_errors, memory_read_failed
     target = debugger.GetSelectedTarget()
     target.DeleteAllBreakpoints()
     target.BreakpointCreateByName("main")
@@ -115,7 +115,7 @@ def automated_debugging(debugger):
     
     while process.GetState() != lldb.eStateExited:
         debugging_file = get_sourceFile_path(target)
-        line_of_crush = get_current_line(target)
+        line_of_crash = get_current_line(target)
         thread = process.GetThreadAtIndex(0)
         thread.StepOver()
 
@@ -142,7 +142,7 @@ def automated_debugging(debugger):
             if sig_detected != "":
                 target.DeleteAllBreakpoints()
                 if memory_read_failed is False:
-                    target.BreakpointCreateByLocation(debugging_file, line_of_crush)
+                    target.BreakpointCreateByLocation(debugging_file, line_of_crash)
                 else:
                     target.BreakpointCreateByName("main")
                 if process.IsValid() and process.GetState() == lldb.eStateStopped:
