@@ -72,7 +72,7 @@ def automatedDebuggingInfo(debugger):
 
     if stepping.blocking_errors is True:
         if stepping.memory_read_failed is False:
-            debugging_result = f"Il programma durante il debugging si è interrotto alla linea {stepping.line_of_crush}. La ragione dello stop è: {stepping.sig_detected}. "
+            debugging_result = f"Il programma durante il debugging si è interrotto alla linea {stepping.line_of_crash}. La ragione dello stop è: {stepping.sig_detected}. "
         elif stepping.memory_read_failed is True:
             debugging_result = f"Il programma durante il debugging si è interrotto. La ragione dello stop è: {stepping.sig_detected}. "
     elif stepping.blocking_errors is False:
